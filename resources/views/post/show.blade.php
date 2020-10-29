@@ -1,16 +1,26 @@
-@extends('layout.layout')
+@extends('layouts.app')
 @section('title', 'detail')
 @section('content')
-    <br class="container">
-        <h2>Title :  {{ $id->title}} </h2>
-         Body : {{ $id->body }}</br>
-        <br> Date created - {{ $id->created_at }} </br>
-        <br> Date updates - {{ $id->updated_at }} </br>
-        <a href="{{route('posts.modify', ['id'=>$id->id])}}" class="btn"> Edit </a>
-        <a href="{{route('posts.delete', ['id'=>$id->id])}}" class="btn"> Delete </a>
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header"><h2>Title : {{ $post->title}} </h2>
+                    </div>
+                    <div class="card-body">
+                        Body : {{ $post->text }}</br>
+                        <br> Date created - {{ $post->created_id }} </br>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
 @endsection
 @section('bottom')
-    <h3> <a href="/view"> To view </a></h3>
+    <h3><a href="/home/view"> To view </a></h3>
 @endsection

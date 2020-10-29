@@ -1,24 +1,28 @@
-@extends('layout.layout')
-
+@extends('layouts.app')
 @section('title', 'Page View')
-
 @section('content')
-    <h1> List of articles </h1>
+
     <div class="container">
-        <table>
-            @foreach ($posts as $row)
-                <tr>
-                    <td>
-                        <a href="{{route('posts.id', ['id'=>$row->id])}}">{{ $row->title }} </a>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Blogs list:
+                    </div>
+
+                    @foreach ($posts as $row)
+                        <div class="card-body">
+                            <h4>
+                            <a href="{{route('post.show', ['id'=>$row->id])}}">{{ $row->title }} </a>
+                            </h4>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
+
 @endsection
 
-@section('bottom')
-<h3> <a href="/"> To main </a></h3>
-@endsection
 
 

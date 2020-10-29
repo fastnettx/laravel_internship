@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class AddColumsPrice extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title');
-            $table->text('body');
-            $table->timestamps();
-
+        Schema::table('products', function (Blueprint $table) {
+            $table->double('price', 8, 2)->after('brand_id')->default(0)->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::table('products', function (Blueprint $table) {
+            //
+        });
     }
 }
