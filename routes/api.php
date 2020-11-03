@@ -3,7 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\BrandController;
 use App\Http\Controllers\API\CategorieController;
-use App\Http\Controllers\API\Payment_methodsController;
+use App\Http\Controllers\API\PaymentMethodsController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
@@ -37,5 +37,5 @@ Route::namespace('API')->group(function() {
 Route::resource('category', CategorieController::class)->middleware('auth:sanctum');
 Route::resource('post', PostController::class)->middleware('auth:sanctum');
 Route::resource('product', ProductController::class)->middleware('auth:sanctum');
-Route::resource('payment', Payment_methodsController::class)->middleware('auth:sanctum');
+Route::resource('payment', PaymentMethodsController::class)->middleware('auth:sanctum');
 Route::resource('brand', BrandController::class)->middleware('auth:sanctum');

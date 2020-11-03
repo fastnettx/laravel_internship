@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Brand');
     }
+
+    public function basket()
+    {
+        return $this->hasMany('App\Models\Basket');
+    }
 }

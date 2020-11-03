@@ -397,10 +397,13 @@
 <div class="top-right links">
     @auth
         <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-        <a href="{{ url('/logout') }}">Logout</a>
+            You are logged in as - {{ Auth::user()->email}}
         </div>
         <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-        You are logged in as - {{ Auth::user()->email}}
+            <a href="{{ url('/logout') }}">Logout</a>
+        </div>
+        <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
+            <a href="{{ url('/basket') }}">Корзина</a>
         </div>
     @else
         <div class="flex justify-left pt-3 sm:justify-start sm:pt-0">
@@ -410,11 +413,11 @@
             <div class="ml-4 text-lg leading-7 font-semibold"><a href="register"
                                                                  class="underline text-gray-900 dark:text-white">Register</a>
             </div>
-    @endauth
+            @endauth
 
-    </div>
+        </div>
 </div>
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+<div class="relative  items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
 
     <div class="max-w-3xl mx-auto sm:px-3 lg:px-8">
 
@@ -505,9 +508,9 @@
 
             </div>
 
-{{--            <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">--}}
-{{--                Build v{{ Illuminate\Foundation\Application::VERSION }}--}}
-{{--            </div>--}}
+            {{--            <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">--}}
+            {{--                Build v{{ Illuminate\Foundation\Application::VERSION }}--}}
+            {{--            </div>--}}
         </div>
     </div>
 </div>

@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Repeat password</label>
-                                    <input name="c_password" class="form-control" type="password" required="">
+                                    <input name="repeat_password" class="form-control" type="password" required="">
                                 </div>
                             </div>
                             <div class="tile-footer">

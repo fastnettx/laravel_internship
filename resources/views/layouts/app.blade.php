@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-<header>
+
     <div class="top-right links">
         @auth
-            Hello - {{ Auth::user()->name}}
+            You are logged in as - {{ Auth::user()->email}}
             <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
                 <a href="{{ route('auth.login') }}">Logout</a>
             </div>
             <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-                <a href="{{ url('/basket') }}">Basket</a>
+                <a href="{{ url('/basket') }}">Корзина</a>
             </div>
         @else
             <div class="flex justify-left pt-3 sm:justify-start sm:pt-0">
@@ -28,16 +28,17 @@
                 @endauth
 
             </div>
-</header>
-<div id="app">
-    <main>
+
+
+
         @yield('content')
-    </main>
-</div>
-<footer>
+
+
+
+</body>
+
     <div class="card-footer">
         <a href="{{ url('/') }}">Main</a>
     </div>
-</footer>
-</body>
+
 </html>

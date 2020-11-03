@@ -39,9 +39,15 @@ class User extends Authenticatable
         'phone' => '+38',
         'address' => 'Ukraine ',
     ];
+
     public function orders()
     {
         return $this->hasMany('App\Models\Orders');
+    }
+
+    public function basket()
+    {
+        return $this->hasMany('App\Models\Basket');
     }
 
     /**
@@ -55,7 +61,7 @@ class User extends Authenticatable
 
     public function checkTheAdmin()
     {
-        return $this->role == 1 ? true : false;
+        return $this->role === 1;
 
     }
 

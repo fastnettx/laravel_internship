@@ -31,7 +31,7 @@
                             @endforeach
                         </div>
                         @auth
-                        <a href="{{ route('order.create', ['id'=>$product->id]) }}" class="btn btn-success" >Buy</a>
+                        <a href="{{ route('order.create', ['id'=>$product->id]) }}" class="btn btn-success" >Купить</a>
                         @endauth
                     </div>
                 </div>

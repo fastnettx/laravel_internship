@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,11 +11,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    private function checkingAdministratorRights()
-    {
-        $user = Auth::user();
-        return $user->checkTheAdmin();
-    }
 
     /**
      * Display a listing of the resource.
@@ -24,18 +20,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return response()->json($products->toArray(), 200);
+        return $products;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,23 +30,9 @@ class ProductController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        if (!$this->checkingAdministratorRights()){
-            return response()->json(['error' => 'You are not an administrator'], 404);
-        }
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'sku' => 'required',
-            'brand_id' => 'required',
-            'in_stock' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-        ]);
-        if ($validator->fails()) {
-            response()->json($validator->errors(), 404);
-        }
+
         $product = Product::create($request->all());
         $product->categories()->attach($request->category);
 
@@ -72,24 +45,9 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        $product = Product::find($id);
-        if (is_null($product)) {
-            return response()->json(['error' => 'Product not found'], 404);
-        }
-        return response()->json($product->toArray(), 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $product;
     }
 
     /**
@@ -99,28 +57,10 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        if (!$this->checkingAdministratorRights()){
-            return response()->json(['error' => 'You are not an administrator'], 404);
-        }
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'sku' => 'required',
-            'brand_id' => 'required',
-            'in_stock' => 'required',
-            'description' => 'required',
-        ]);
-        if ($validator->fails()) {
-            response()->json($validator->errors(), 404);
-        }
-        $product = Product::find($id);
-        if (is_null($product)) {
-            return response()->json(['error' => 'Product not found'], 404);
-        }
         $product->update($request->all());
-
-        return response()->json($product->toArray(), 200);
+        return $product;
     }
 
     /**
@@ -129,16 +69,9 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        if (!$this->checkingAdministratorRights()){
-            return response()->json(['error' => 'You are not an administrator'], 404);
-        }
-        $product = Product::find($id);
-        if (is_null($product)) {
-            return response()->json(['error' => 'Product not found'], 404);
-        }
-        $product->delete($id);
+        $product->delete();
         return response()->json(['product' => $product->name, 'text' => 'Product deleted '], 200);
     }
 }

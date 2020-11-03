@@ -8,14 +8,15 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>
-                            {{  $brand->name  }}
+                           Brand - {{  $brand->name  }}
                         </h3>
                     </div>
                     <div class="card-body">
+                        Выберите продукт:
                         @foreach ($brand->product as $product)
                             <div>
-                                <a href="{{route('product.show', ['id'=>$product->id])}}">{{$product->name}} </a>
-                                - {{ $product->sku }}
+                                Product: <a href="{{route('product.show', ['id'=>$product->id])}}">{{$product->name}} </a>
+                                - {{ $product->description }}
                             </div>
 
                         @endforeach

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\WEB\AuthController;
+use App\Http\Controllers\WEB\BasketController;
 use App\Http\Controllers\WEB\BrandController;
 use App\Http\Controllers\WEB\CategorieController;
 use App\Http\Controllers\WEB\OrderController;
@@ -43,5 +44,6 @@ Route::get('brand', [BrandController::class, 'index'])->name('brand.index');
 Route::get('brand/{id}', [BrandController::class, 'show'])->name('brand.show');
 
 Route::get('/order/{id}', [OrderController::class, 'create'])->name('order.create')->middleware('auth');
-Route::post('/order', [OrderController::class, 'buy'])->name('order.buy')->middleware('auth');
-Route::get('/basket', [OrderController::class, 'basket'])->name('order.basket')->middleware('auth');
+Route::post('/order', [OrderController::class, 'add'])->name('order.add')->middleware('auth');
+Route::get('/basket', [BasketController::class, 'create'])->name('basket.create')->middleware('auth');
+Route::post('/basket', [BasketController::class, 'send'])->name('basket.send')->middleware('auth');
