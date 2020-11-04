@@ -45,5 +45,6 @@ Route::get('brand/{id}', [BrandController::class, 'show'])->name('brand.show');
 
 Route::get('/order/{id}', [OrderController::class, 'create'])->name('order.create')->middleware('auth');
 Route::post('/order', [OrderController::class, 'add'])->name('order.add')->middleware('auth');
+
 Route::get('/basket', [BasketController::class, 'create'])->name('basket.create')->middleware('auth');
 Route::post('/basket', [BasketController::class, 'send'])->name('basket.send')->middleware('auth');

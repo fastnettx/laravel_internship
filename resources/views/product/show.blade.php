@@ -18,7 +18,7 @@
                             Description - {{$product->description}}
                         </div>
                         <div class="card-body">
-                            Price - {{$product->price}}
+                            Price - {{number_format($product->price,2)}}
                         </div>
                         <div class="card-body">
                             Brand - <a href="{{route('brand.show', ['id'=>$product->brand->id])}}">{{$product->brand->name}} </a>

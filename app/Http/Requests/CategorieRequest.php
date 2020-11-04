@@ -36,7 +36,7 @@ class CategorieRequest extends FormRequest
     {
         return [
             'name.required' => 'A name is required',
-            'parent_id.required' => 'A parent_id is required',
+            'parent_id.required' => 'A  parent_id is required',
         ];
     }
 }

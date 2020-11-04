@@ -28,4 +28,12 @@ class OrderRequest extends FormRequest
             'quantity' => 'required|between:1,2',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'product_id.required' => 'A product_id is required',
+            'quantity.required' => 'A  quantity is required',
+        ];
+    }
 }

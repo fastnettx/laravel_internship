@@ -28,4 +28,11 @@ class BasketRequest extends FormRequest
             'adress' => 'required|string',
         ];
     }
+    public function messages()
+    {
+        return [
+            'payment.required' => 'A payment value 1,2,3,4',
+            'adress.required' => 'A adress is required',
+        ];
+    }
 }

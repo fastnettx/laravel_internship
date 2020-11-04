@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    protected $ADMINROLE = 1;
     use HasApiTokens, HasFactory, Notifiable;
 
 //    use HasFactory, Notifiable;
@@ -65,9 +66,9 @@ class User extends Authenticatable
 
     }
 
-    public function setAssignRoleAttribute($value)
+    public function setAssignRoleAttribute()
     {
-        $this->attributes['role'] = (int)$value;
+        $this->attributes['role'] = $this->ADMINROLE;
     }
 
 }

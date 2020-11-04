@@ -31,4 +31,15 @@ class PostRequest extends FormRequest
             'publish_at' => 'nullable|date'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'A title is required',
+            'text.required' => 'A text is required',
+            'publish_at.required' => 'A publish_at is required',
+        ];
+    }
+
+
 }

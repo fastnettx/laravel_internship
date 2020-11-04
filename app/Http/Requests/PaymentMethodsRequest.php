@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class PaymentMethodsRequest extends FormRequest
@@ -29,4 +30,13 @@ class PaymentMethodsRequest extends FormRequest
             'name' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'A name is required',
+        ];
+    }
+
+
 }

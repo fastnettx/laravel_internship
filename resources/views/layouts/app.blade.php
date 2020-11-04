@@ -15,10 +15,10 @@
         @auth
             You are logged in as - {{ Auth::user()->email}}
             <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-                <a href="{{ route('auth.login') }}">Logout</a>
+                <a href="{{ route('auth.logout') }}">Logout</a>
             </div>
             <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-                <a href="{{ url('/basket') }}">Корзина</a>
+                <a href="{{ route('basket.create') }}">Корзина</a>
             </div>
         @else
             <div class="flex justify-left pt-3 sm:justify-start sm:pt-0">

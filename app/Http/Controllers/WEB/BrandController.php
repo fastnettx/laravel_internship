@@ -16,6 +16,10 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::all();
+//         $brand = Brand::find(12);
+//            dd($brand->getFirstMedia('images_brand'));
+//        dd($brand->getFirstMedia('images_brand'));
+
         return view('brand.index', ['brands' => $brands]);
     }
 

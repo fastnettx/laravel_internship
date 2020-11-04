@@ -31,4 +31,13 @@ class BrandRequest extends FormRequest
             'image' => 'required|image',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'A name is required',
+            'content.required' => 'A content is required',
+            'image.required' => 'A image is required',
+        ];
+    }
 }

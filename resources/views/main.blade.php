@@ -400,10 +400,10 @@
             You are logged in as - {{ Auth::user()->email}}
         </div>
         <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-            <a href="{{ url('/logout') }}">Logout</a>
+            <a href="{{  route('auth.logout') }}">Logout</a>
         </div>
         <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-            <a href="{{ url('/basket') }}">Корзина</a>
+            <a href="{{ route('basket.create') }}">Корзина</a>
         </div>
     @else
         <div class="flex justify-left pt-3 sm:justify-start sm:pt-0">
@@ -437,7 +437,7 @@
 
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Test category
+                            To select a category, select this section
                         </div>
                     </div>
                 </div>
@@ -457,7 +457,7 @@
 
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Test brand
+                            To select a brand, select this section
                         </div>
                     </div>
                 </div>
@@ -476,7 +476,7 @@
 
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Test product
+                            To select a product, select this section
                         </div>
                     </div>
                 </div>
@@ -494,7 +494,7 @@
 
                     <div class="ml-12">
                         <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                            Test blog
+                            To select a blog, select this section
                         </div>
                     </div>
                 </div>

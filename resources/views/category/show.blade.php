@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><h2>Title : {{ $category->name}} </h2>
+                    <div class="card-header"><h2>Category : {{ $category->name}} </h2>
                     </div>
                     <div class="card-body">
                         Product list :

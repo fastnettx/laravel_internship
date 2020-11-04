@@ -38,6 +38,7 @@ class BrandController extends Controller
         $brand = new Brand($request->except(['image']));
         $brand->save();
         $brand->addMediaFromRequest('image')->toMediaCollection('images_brand');
+        $brand->getFirstMediaUrl('images_brand');
         return $brand;
     }
 
@@ -49,8 +50,9 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        $brand_image = Media::where('model_id', $brand->id)->first();
-        $brand['file'] = $brand_image->file_name;
+//        $brand_image = Media::where('model_id', $brand->id)->first();
+//        $brand['file'] = $brand_image->file_name;
+        $brand->getFirstMediaUrl('images_brand');
         return $brand;
     }
 
@@ -66,7 +68,7 @@ class BrandController extends Controller
     {
 
         $data = $request->all();
-        $brand->media()->delete($brand->id);
+        $brand->media()->delete();
         $brand->addMediaFromRequest('image')
             ->toMediaCollection('images_brand');
         $brand->update($data);
@@ -82,7 +84,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        $brand->media()->delete($brand->id);
+        $brand->media()->delete();
         $brand->delete();
         return response()->json(['product' => $brand->name, 'text' => 'Brand deleted '], 200);
     }
