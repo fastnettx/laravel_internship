@@ -51,4 +51,11 @@ class BasketController extends Controller
         $user->basket()->whereStatus($this->DONE)->delete();
         return view('basket.viewing', ['order' => $order]);
     }
+
+    public function empty()
+    {
+        $user = Auth::user();
+        $orders_element = $user->basket()->whereStatus($this->NOTDONE)->delete();
+        return redirect()->route('basket.create');
+    }
 }

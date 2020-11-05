@@ -48,3 +48,4 @@ Route::post('/order', [OrderController::class, 'add'])->name('order.add')->middl
 
 Route::get('/basket', [BasketController::class, 'create'])->name('basket.create')->middleware('auth');
 Route::post('/basket', [BasketController::class, 'send'])->name('basket.send')->middleware('auth');
+Route::get('/basket/empty', [BasketController::class, 'empty'])->name('basket.empty')->middleware('auth');

@@ -7,6 +7,10 @@
                 <div class="card">
                     <div class="card-header">
                         <h3>Корзина</h3>
+                        <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
+                            <a href="{{ route('basket.empty') }}">Очистить корзину</a>
+                        </div>
+
 
                     </div>
                     <div class="card-body">
