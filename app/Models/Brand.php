@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Brand extends Model implements HasMedia
 {
+    use HasFactory;
     use  InteractsWithMedia;
 
 
