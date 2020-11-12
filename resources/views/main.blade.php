@@ -394,6 +394,7 @@
     </style>
 </head>
 <body class="antialiased">
+@livewireScripts
 <div class="top-right links">
     @auth
         <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
@@ -417,12 +418,23 @@
 
         </div>
 </div>
-<div class="relative  items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
 
+
+
+<div class="relative  items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+    <div class="p-6">
+        <div class="flex items-center">
+            Search product
+        </div>
+        <div class="flex items-center">
+            @livewire('search')
+        </div>
+    </div>
     <div class="max-w-3xl mx-auto sm:px-3 lg:px-8">
 
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
             <div class="grid grid-cols-1 md:grid-cols-2">
+
                 <div class="p-6">
                     <div class="flex items-center">
                         <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -441,6 +453,7 @@
                         </div>
                     </div>
                 </div>
+
 
                 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                     <div class="flex items-center">
