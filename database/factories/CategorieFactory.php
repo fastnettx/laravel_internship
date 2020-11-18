@@ -21,10 +21,11 @@ class CategorieFactory extends Factory
      */
     public function definition()
     {
-        $category_id = 1;
+
         return [
-            'name' => 'Category-' . $category_id,
-            'parent_id' => $category_id,
+            'name' => 'Category-' . random_int(1, 20),
+//            'parent_id' => 1,
+
         ];
     }
 }

@@ -41,11 +41,15 @@
                                     <label class="control-label"> Adress</label>
                                     <input type="text" name="adress" class="form-control">
                                 </div>
+
                             </div>
                             <div class="tile-footer">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-fw fa-lg fa-check-circle"></i>Подтвердить заказ
                                 </button>
+                            </div>
+                            <div>
+                                {{Session::get('status_empty')}}
                             </div>
                         </form>
                     </div>

@@ -13,6 +13,11 @@ class Product extends Model
         'name', 'sku', 'brand_id', 'in_stock', 'price', 'description'
     ];
 
+    public function scopeInstock($query)
+    {
+        return $query->where('in_stock', '>', 0);
+    }
+
     public function categories()
     {
         return $this->belongsToMany('App\Models\Categorie', 'product_category', 'product_id', 'category_id');

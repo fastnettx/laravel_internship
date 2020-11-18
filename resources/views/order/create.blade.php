@@ -31,6 +31,9 @@
                                     <i class="fa fa-fw fa-lg fa-check-circle"></i>Добавить в корзину
                                 </button>
                             </div>
+                            <div>
+                                {{Session::get('quantity')}}
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Brand;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ProductFactory extends Factory
 {
@@ -23,11 +24,11 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => Str::random(10),
             'sku' => $this->faker->company,
             'brand_id' => Brand::factory(),
-            'price' => 150.00,
-            'in_stock' => 5,
+            'price' => random_int(100, 10000),
+            'in_stock' => random_int(1, 10),
             'description' => $this->faker->text,
 
         ];

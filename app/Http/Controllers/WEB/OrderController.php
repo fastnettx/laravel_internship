@@ -12,6 +12,7 @@ use App\Models\PaymentMethods;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -26,12 +27,17 @@ class OrderController extends Controller
     }
 
 
-
     public function add(OrderRequest $request)
     {
         $product = Product::find($request->input('product_id'));
         $quantity = $request->input('quantity');
         $user = Auth::user();
+
+        if (($product->in_stock - $quantity) < 0 || $quantity < 1) {
+            Session::flash('quantity',
+                'You have specified the wrong quantity of goods, there are only in stock - ' . $product->in_stock);
+            return redirect()->route('order.create', ['id' => $product->id]);
+        }
         $basket = Basket::create([
                 'product_id' => $product->id,
                 'quantity' => $quantity,
@@ -39,7 +45,6 @@ class OrderController extends Controller
                 'user_id' => $user->id,
                 'status' => $this->NOTDONE,
             ]
-
         );
         return redirect()->route('product.index');
     }

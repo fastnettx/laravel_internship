@@ -1,8 +1,10 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Categorie;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class CategorieSeeder extends Seeder
@@ -12,8 +14,17 @@ class CategorieSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
-        Categorie::factory()->has(Product::factory()->count(2))->count(2)->create();
+        Categorie::factory()
+            ->has(Product::factory()->count(5))
+            ->state(new Sequence(
+                ['parent_id' => '1'],
+                ['parent_id' => '2'],
+                ['parent_id' => '3']
+                ))->count(5)->create();
+
+
     }
 }

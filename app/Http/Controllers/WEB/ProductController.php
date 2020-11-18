@@ -16,9 +16,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::simplePaginate(4);
+        $productsQuery = Product::instock();
+//        $productsQuery = Product::query();
+        if ($request->filled('price_from')) {
+            $productsQuery->where('price', '>=', $request->price_from);
+        }
+        if ($request->filled('price_to')) {
+            $productsQuery->where('price', '<=', $request->price_to);
+        }
+
+        $products = $productsQuery->simplePaginate(4);
 
         return view('product.index', ['products' => $products]);
     }

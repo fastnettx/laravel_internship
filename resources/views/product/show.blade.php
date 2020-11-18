@@ -21,6 +21,9 @@
                             Price - {{number_format($product->price,2)}}
                         </div>
                         <div class="card-body">
+                            Quantity in stock - {{$product->in_stock}}
+                        </div>
+                        <div class="card-body">
                             Brand - <a href="{{route('brand.show', ['id'=>$product->brand->id])}}">{{$product->brand->name}} </a>
 
                         </div>
