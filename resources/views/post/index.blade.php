@@ -16,10 +16,16 @@
                             <a href="{{route('post.show', ['id'=>$row->id])}}">{{ $row->title }} </a>
                             </h4>
                         </div>
+                        <div>
+                            {{ $row->short_text }} <a href="{{route('post.show', ['id'=>$row->id])}}">... </a>
+                        </div>
                     @endforeach
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row">
+        {{ $posts->onEachSide(3)->links() }}
     </div>
 
 @endsection

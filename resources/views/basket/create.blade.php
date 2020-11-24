@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex-center position-ref full-height">
+    <div class="flex-center  full-height">
         <div class="container">
-            <div class="col-md-auto mt-5">
+            <div class="col-md-8 mt-5">
                 <div class="card">
                     <div class="card-header">
                         <h3>Корзина</h3>
-                        <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
+                        <div class="">
                             <a href="{{ route('basket.empty') }}">Очистить корзину</a>
                         </div>
 
@@ -48,9 +48,7 @@
                                     <i class="fa fa-fw fa-lg fa-check-circle"></i>Подтвердить заказ
                                 </button>
                             </div>
-                            <div>
-                                {{Session::get('status_empty')}}
-                            </div>
+
                         </form>
                     </div>
                 </div>

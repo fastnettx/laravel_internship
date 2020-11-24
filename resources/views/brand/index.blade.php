@@ -27,6 +27,9 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        {{ $brands->onEachSide(3)->links() }}
+    </div>
 
 
 @endsection

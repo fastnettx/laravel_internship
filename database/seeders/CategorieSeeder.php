@@ -18,12 +18,12 @@ class CategorieSeeder extends Seeder
     public function run()
     {
         Categorie::factory()
-            ->has(Product::factory()->count(5))
+            ->has(Product::factory()->count(15))
             ->state(new Sequence(
                 ['parent_id' => '1'],
                 ['parent_id' => '2'],
                 ['parent_id' => '3']
-                ))->count(5)->create();
+                ))->count(10)->create();
 
 
     }

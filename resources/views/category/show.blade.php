@@ -6,18 +6,21 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><h2>Category : {{ $category->name}} </h2>
+                    <div class="card-header text-info"><h2> {{$category->name}} </h2>
                     </div>
                     <div class="card-body">
                         Product list :
                     </div>
                     <div class="card-body">
-                        @foreach ($category->products as $product)
+                        @foreach ($products as $product)
                             <div class="card-body">
                                 <h4>
                                     <a href="{{route('product.show', ['id'=>$product->id])}}">{{ $product->name }} </a>
 
                                 </h4>
+                                <div>
+                                    {{ $product->description }}
+                                </div>
 
                             </div>
                         @endforeach
@@ -29,10 +32,10 @@
             </div>
         </div>
     </div>
-
+    <div class="row layer1">
+        {{$products->links() }}
+    </div>
 
 
 @endsection
-@section('bottom')
-    <h3><a href="/home/view"> To view </a></h3>
-@endsection
+

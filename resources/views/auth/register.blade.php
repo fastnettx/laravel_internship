@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex-center position-ref full-height">
         <div class="container">
-            <div class="col-md-auto mt-5">
+            <div class="col-md-5 mt-5">
                 <div class="card">
                     <div class="card-header">
                         <h3>Create register</h3>

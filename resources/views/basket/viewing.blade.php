@@ -9,6 +9,10 @@
                         <h3>Ваш заказ успешно сформирован под номером - {{$order->id}}</h3>
 
                     </div>
+                    <div class="card alert alert-success">
+                        Информация о заказе отправлена на  email:  {{$order->user->email}}
+
+                    </div>
                     <div class="card-body">
                     </div>
                 </div>

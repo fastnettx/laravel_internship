@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $productsQuery = Product::instock();
+        $productsQuery = Product::instock()->orderBy('price');
 //        $productsQuery = Product::query();
         if ($request->filled('price_from')) {
             $productsQuery->where('price', '>=', $request->price_from);
@@ -26,8 +26,8 @@ class ProductController extends Controller
         if ($request->filled('price_to')) {
             $productsQuery->where('price', '<=', $request->price_to);
         }
+        $products = $productsQuery->simplePaginate(3);
 
-        $products = $productsQuery->simplePaginate(4);
 
         return view('product.index', ['products' => $products]);
     }

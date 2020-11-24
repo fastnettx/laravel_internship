@@ -8,37 +8,49 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .layer1 {
+            height: 10%;
+            padding: 7px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
 </head>
-<body>
+<bdy class="bg-light">
 
-    <div class="top-right links">
-        @auth
+<div class="top-right links ">
+    @auth
+        <div class="row justify-content-md-center text-success">
             You are logged in as - {{ Auth::user()->email}}
-            <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-                <a href="{{ route('auth.logout') }}">Logout</a>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-2 col-sm-2 col-xs-12 text-center card alert alert-primary" role="alert">
+                <a class="alert-link" href="{{ route('auth.logout') }}">Logout</a>
             </div>
-            <div class="flex justify-right pt-3 sm:justify-start sm:pt-0">
-                <a href="{{ route('basket.create') }}">Корзина</a>
+            <div class="col-md-2 col-sm-2 col-xs-12 text-center card alert alert-primary" role="alert">
+                <a class="alert-link" href="{{ route('basket.create') }}">Корзина -
+                    {{\App\Models\Basket::getCountAmount(Auth::user()->id)}} тов.</a>
+                {{Session::get('status_empty')}}
             </div>
-        @else
-            <div class="flex justify-left pt-3 sm:justify-start sm:pt-0">
-                <div class="ml-4 text-lg leading-7 font-semibold"><a href="{{ route('auth.login') }}"
-                                                                     class="underline text-gray-900 dark:text-white">Login</a>
-                </div>
-                @endauth
-
+        </div>
+    @else
+        <div class="row justify-content-md-center">
+            <div class="col-md-2 col-sm-2 col-xs-12 text-center card alert alert-primary" role="alert">
+                <a class="alert-link" href="{{ route('auth.login') }}">Login</a>
             </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 text-center card alert alert-primary" role="alert">
+                <a class="alert-link" href="{{ route('register') }}">Register</a>
+            </div>
+        </div>
+    @endauth
+</div>
 
+@yield('content')
 
+</bdy>
 
-        @yield('content')
-
-
-
-</body>
-
-    <div class="card-footer">
-        <a href="{{ url('/') }}">Main</a>
-    </div>
-
+<div class="card-footer">
+    <a href="{{ url('/') }}">Main</a>
+</div>
 </html>

@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::simplePaginate(5);
 
         return view('post.index', ['posts' => $posts]);
     }
@@ -32,7 +32,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('post.show', ['post' => $post]);
+        $post_create = Carbon::parse($post->created_at)->toFormattedDateString();
+        return view('post.show', ['post' => $post, 'post_create' => $post_create]);
     }
 
 

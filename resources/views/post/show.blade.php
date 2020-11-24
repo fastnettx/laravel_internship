@@ -6,11 +6,11 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header"><h2>Title : {{ $post->title}} </h2>
+                    <div class="card-header"><h2> {{ $post->title}} </h2>
                     </div>
                     <div class="card-body">
-                        Body : {{ $post->text }}</br>
-                        <br> Date created - {{ $post->created_id }} </br>
+                         {{ $post->text }}</br>
+                        <br> Date created - {{ $post_create}} </br>
 
                     </div>
                 </div>

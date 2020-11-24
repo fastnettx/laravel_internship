@@ -31,15 +31,9 @@ class BasketController extends Controller
     public function send(BasketRequest $request)
     {
         $user = Auth::user();
-        if ($user->basket()->whereStatus($this->NOTDONE)->count() == 0) {
-            Session::flash('status_empty', 'Your cart is empty, add a load');
-            //            return redirect()->route('product.index');
-            return redirect()->route('basket.create');
-        }
         $adress = $request->input('adress');
         $payment = $request->input('payment');
         $orders_element = $user->basket()->whereStatus($this->NOTDONE)->get();
-
         $order = Order::create([
             'user_id' => $user->id,
             'status' => $this->NOTDONE,
@@ -59,12 +53,10 @@ class BasketController extends Controller
         }
         $user->basket()->whereStatus($this->NOTDONE)->update(['status' => $this->DONE]);
         $user->basket()->whereStatus($this->DONE)->delete();
-
 //        Mail::to($user)->send(new SendEmail($user, $order));
 //        file_put_contents(storage_path('logs/laravel.log'),'');
         Mail::to($user)->queue(new SendEmail($user, $order));
         return view('basket.viewing', ['order' => $order]);
-
     }
 
     public function empty()

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Basket extends Model
 {
@@ -19,6 +20,11 @@ class Basket extends Model
     public function product()
     {
         return $this->belongsTo('App\Models\Product');
+    }
+
+    static public function getCountAmount()
+    {
+        return self::whereUserId(Auth::user()->id)->count() ;
     }
 
 //    public function setPriceCountAttribute($value)

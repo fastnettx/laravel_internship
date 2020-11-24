@@ -15,8 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
-//         $brand = Brand::find(12);
+        $brands = Brand::simplePaginate(5);
+
 //            dd($brand->getFirstMedia('images_brand'));
 //        dd($brand->getFirstMedia('images_brand'));
 

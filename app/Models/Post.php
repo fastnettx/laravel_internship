@@ -12,4 +12,8 @@ class Post extends Model
     protected $fillable = [
         'title', 'text', 'publish_at',
     ];
+    public function getShortTextAttribute()
+    {
+        return mb_substr($this->text, 0, 75);
+    }
 }
