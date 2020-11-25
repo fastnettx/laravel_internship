@@ -26,7 +26,7 @@ class ProductFactory extends Factory
         return [
             'name' => 'Prod-'.Str::random(5),
             'sku' => $this->faker->company,
-            'brand_id' => Brand::factory(),
+//            'brand_id' => Brand::factory(),
             'price' => random_int(100, 10000),
             'in_stock' => random_int(1, 10),
             'description' => $this->faker->text,

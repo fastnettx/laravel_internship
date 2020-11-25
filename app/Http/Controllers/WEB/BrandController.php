@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WEB;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -15,11 +16,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::simplePaginate(5);
-
-//            dd($brand->getFirstMedia('images_brand'));
+        $brands = Brand::simplePaginate(7);
 //        dd($brand->getFirstMedia('images_brand'));
-
         return view('brand.index', ['brands' => $brands]);
     }
 
@@ -33,7 +31,8 @@ class BrandController extends Controller
     public function show($id)
     {
         $brand = Brand::find($id);
-        return view('brand.show', ['brand' => $brand]);
+        $products = Product::query()->whereBrandId($brand->id)->simplePaginate(5);;
+        return view('brand.show', compact('brand', 'products'));
 
     }
 

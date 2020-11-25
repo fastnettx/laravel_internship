@@ -7,16 +7,19 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>
-                            Brand
-                            <div>{{  $brand->name  }}
-                                <img src="{{$brand->getFirstMediaUrl('images_brand', 'thumb')}}"/>
-                            </div>
-                        </h3>
+                        <div class="col-md-4">
+                            <h3>
+                                Brand
+                            </h3>
+                        </div>
+                        <div class="col-md-4">{{  $brand->name  }}
+                            <img src="{{$brand->getFirstMediaUrl('images_brand', 'thumb')}}"/>
+                        </div>
+
                     </div>
                     <div class="card-body">
                         Выберите продукт:
-                        @foreach ($brand->product as $product)
+                        @foreach ($products as $product)
                             <div class="row justify-content-center">
                                 <a href="{{route('product.show', ['id'=>$product->id])}}">{{$product->name}} </a>
                             </div>
@@ -29,6 +32,9 @@
                 </div>
 
             </div>
+        </div>
+        <div>
+            {{$products->withQueryString()->links()}}
         </div>
     </div>
 
